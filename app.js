@@ -1,13 +1,18 @@
-require("dotenv").config({ path: "./config.env" });
+const dotenv = require("dotenv");
 const express = require("express");
 const app = express();
+const userRouter = require("./routes/userroutes");
 
-app.get("/", (req, res) => {
-  res.send("hello world how you doing");
-});
+dotenv.config({ path: "./config.env" });
 
-app.get("/name", (req, res) => {
-  res.send("my name is siddhartha");
+//!ROUTES
+app.use("/users", userRouter);
+
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    status: "fail",
+    message: `Can't fin ${req.originalUrl} on the server`,
+  });
 });
 
 module.exports = app;
