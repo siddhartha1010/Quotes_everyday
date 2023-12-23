@@ -11,18 +11,18 @@ const UserSchema = new mongoose.Schema(
 
     email: {
       type: String,
-      required: [true, "An User must have email"],
+      required: [true, "An User must have an email"],
       unique: true,
-      lowecase: true,
+      lowercase: true,
     },
-    photo: {
-      type: String,
-    },
+    // photo: {
+    //   type: String,
+    // },
     password: {
       type: String,
       required: [true, "Please enter a password"],
       minlength: 8,
-      select: false, //Hiding it from the user only showing in DB
+      // select: false, //Hiding it from the user only showing in DB
     },
   },
   { timestamps: true } //created at and updated at dinxa
