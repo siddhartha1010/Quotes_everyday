@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
+
 const app = require("./app");
 const DB_NAME = require("./constants");
-
-dotenv.config({ path: "./config.env" });
 
 //!Catching uncaught exceptions like console.log(x) but x is not defined yo synchronous tala ko i guess async
 process.on("uncaughtException", (err) => {
@@ -32,3 +32,6 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
+// console.log(process.env);
+
+console.log(process.env.NODE_ENV);
