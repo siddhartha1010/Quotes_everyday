@@ -12,3 +12,13 @@ exports.getAllQuotes = catchasync(async (req, res) => {
     },
   });
 });
+
+exports.getAQuotes = catchasync(async (req, res) => {
+  const quotes = await Quote.findById(req.params.id);
+  res.status(200).json({
+    status: "success",
+    data: {
+      quotes,
+    },
+  });
+});
