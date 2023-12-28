@@ -31,3 +31,15 @@ exports.getOneUser = catchasync(async (req, res, next) => {
     },
   });
 });
+
+exports.deleteMe = catchasync(async (req, res, next) => {
+  await User.findByIdAndUpdate(req.user._id, { active: false }); //already logged in ko id
+  // console.log(finduser);
+  // if (!finduser) {
+  //   return next(new AppError("User not found", 404));
+
+  res.status(204).json({
+    status: "success",
+    data: null,
+  });
+});

@@ -22,3 +22,15 @@ exports.getAQuotes = catchasync(async (req, res) => {
     },
   });
 });
+
+exports.deleteQuote = catchasync(async (req, res, next) => {
+  const quote = await Quote.findByIdAndDelete(req.params.id);
+  if (!quote) {
+    next(new AppError("No quote with that id", 404));
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: null,
+  });
+});

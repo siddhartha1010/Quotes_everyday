@@ -11,4 +11,12 @@ router.get(
   authController.protect,
   quoteController.getAQuotes
 );
+
+router.get(
+  "/deleteaquote/:id",
+  authController.restrictTo("admin"),
+  authController.protect,
+  quoteController.deleteQuote
+);
+
 module.exports = router;

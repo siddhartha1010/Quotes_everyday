@@ -10,4 +10,9 @@ router.post("/login", authController.login);
 router.get("/getallusers", userController.getAllUsers);
 // router.post("/createuser", userController.createUser);
 router.get("/getauser/:id", userController.getOneUser);
+
+router.post("/forgotpassword", authController.forgotPassword);
+router.patch("/resetPassword/:token", authController.resetPassword);
+
+router.delete("/deleteuser", authController.protect, userController.deleteMe);
 module.exports = router;
