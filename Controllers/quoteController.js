@@ -1,6 +1,9 @@
 const Quote = require("./../Models/quotesModel");
 const catchasync = require("./../utils/catchasync");
 const AppError = require("../utils/appError");
+const { findOne } = require("../Models/userModel");
+const sendEmail = require("./../utils/email");
+// const User = require("./../Models/userModel");
 
 exports.getAllQuotes = catchasync(async (req, res) => {
   const quotes = await Quote.find();

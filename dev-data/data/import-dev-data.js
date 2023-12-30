@@ -25,7 +25,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Quotes.deleteMany();
-    console.log("Data loaded sucessfully");
+    console.log("Data deleted sucessfully");
     process.exit();
   } catch (err) {
     console.log(err);

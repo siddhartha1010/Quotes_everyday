@@ -14,7 +14,7 @@ router.get(
 
 router.get(
   "/deleteaquote/:id",
-  authController.restrictTo("admin"),
+  // authController.restrictTo("admin"),
   authController.protect,
   quoteController.deleteQuote
 );

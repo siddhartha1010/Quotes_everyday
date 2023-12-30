@@ -1,0 +1,207 @@
+:root {
+  --color-primary: #5ec576;
+  --color-secondary: #ffcb03;
+  --color-tertiary: #ff585f;
+  --color-primary-darker: #4bbb7d;
+  --color-secondary-darker: #ffbb00;
+  --color-tertiary-darker: #fd424b;
+  --color-primary-opacity: #5ec5763a;
+  --color-secondary-opacity: #ffcd0331;
+  --color-tertiary-opacity: #ff58602d;
+  --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
+  --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.9;
+  background-color: var(--color-secondary);
+}
+
+.nav {
+  display: flex;
+
+  align-items: center;
+  padding: 4rem 6rem;
+
+  background-color: var(--color-secondary);
+}
+
+.logo {
+  height: 4.5rem;
+  margin-left: 0;
+}
+
+.topic {
+  margin: 0 auto; /* Center horizontally: it essentially tells the browser to calculate an equal margin on both the left and right sides of the element. */
+}
+
+/* HEADER */
+.body {
+  padding: 0 3rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__title {
+  flex: 1;
+  max-width: 115rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  row-gap: 3rem;
+  align-content: center;
+  justify-content: center;
+  align-items: start;
+  justify-items: start;
+}
+
+h1 {
+  font-size: 5.5rem;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+.highlight {
+  color: #fd424b;
+}
+.modal__form {
+  margin: 0 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.modal__form label {
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.modal__form input {
+  font-size: 1.7rem;
+  padding: 1rem 1.5rem;
+  border: px solid #ff58602d;
+  border-radius: 0.5rem;
+}
+
+.modal__form button {
+  grid-column: 1 / span 2;
+  justify-self: center;
+  align-items: end;
+  margin-top: 1rem;
+}
+.btn_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  /* display: flex; */
+
+  background-color: var(--color-primary);
+  /* background-color: red; */
+  font-size: 1.6rem;
+  font-family: inherit;
+  font-weight: 500;
+  border: none;
+  padding: 1.25rem 2.5rem;
+  border-radius: 10rem;
+  cursor: pointer;
+  /* transition: all 0.3s; */
+  margin-right: 1rem;
+  /* margin-left: 10rem; */
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-darker);
+}
+
+.btn--text {
+  display: inline-block;
+  background: none;
+  font-size: 1.7rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--color-primary);
+  border: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.forgot {
+  margin-bottom: 2px;
+}
+
+/* LOGIN FORM */
+
+.login_body {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* margin: 0; */
+  background-color: var(--color-secondary); /* Light gray background */
+  /* font-family: "", sans-serif; */
+}
+
+.login_header {
+  color: #333;
+  font-size: 2.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.modal__form__login {
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 1.25rem;
+  border: 1rem solid #5ec576;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+.label_class {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.ip_login {
+  width: 100%;
+  padding: 0.55rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+  border: 0.07rem solid #333;
+
+  border-radius: 4px;
+}
+.ip_login::placeholder {
+  color: #999; /* Lighter color for placeholder text */
+}

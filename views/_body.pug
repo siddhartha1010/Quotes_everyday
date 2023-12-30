@@ -1,0 +1,25 @@
+div.body
+  .header__title
+    h1
+      | Receive
+      span.highlight   Motivating
+      |  Quotes
+      br
+      span.highlight Everyday
+
+    form.modal__form
+      label(for='email') Email:
+      input#logemail(type='email', placeholder='Enter your email')
+
+      label(for='password') Password:
+      input#logpassword(type='password', placeholder='Password of 8 characters')
+
+      button.btn Login
+
+    .btn_container
+      a.btn(href='/register') Create New Account &rarr;
+      h2 Click here to create a new account
+
+    .forgot
+      h2 Forgotten Password.
+        a(href="#") Click here!

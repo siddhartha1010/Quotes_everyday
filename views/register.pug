@@ -1,0 +1,19 @@
+extends base
+
+block content 
+  body.login_body
+    form.modal__form__login
+      h1.login_header Register
+      label.label_class Name:
+      input.ip_login(type="email", placeholder="Enter your Name")
+      
+      label.label_class Email:
+      input.ip_login(type="email", placeholder="Enter your email")
+      
+      label.label_class Password:
+      input.ip_login(type="text", placeholder="Password of 8 characters")
+      
+      label.label_class Password Confirm:
+      input.ip_login(type="text", placeholder="Confirm your Password")
+      
+      a.btn(href="#") Register
