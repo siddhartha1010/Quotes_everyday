@@ -1,5 +1,5 @@
 import "@babel/polyfill";
-import { login, logout } from "./login";
+import { login, logout, signup } from "./login";
 
 // const logout = async () => {
 //   console.log("ds");
@@ -17,6 +17,7 @@ import { login, logout } from "./login";
 
 const loginForm = document.querySelector(".modal__form");
 const logOutBtn = document.querySelector(".button-warning");
+const signupBtn = document.querySelector(".modal__form__login");
 
 if (loginForm)
   loginForm.addEventListener("submit", (e) => {
@@ -29,7 +30,15 @@ if (loginForm)
   });
 
 if (logOutBtn) logOutBtn.addEventListener("click", logout);
-// if (logOutBtn)
-//   logOutBtn.addEventListener("click", (e) => {
-//     console.log("logged");
-//   });
+
+if (signupBtn)
+  signupBtn.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("reg_name").value;
+    const email = document.getElementById("reg_email").value;
+    const password = document.getElementById("reg_password").value;
+    const passwordConfirm = document.getElementById(
+      "reg_passwordConfirm"
+    ).value;
+    signup(name, email, password, passwordConfirm);
+  });

@@ -5,15 +5,16 @@ block content
     form.modal__form__login
       h1.login_header Register
       label.label_class Name:
-      input.ip_login(type="email", placeholder="Enter your Name")
+      input#reg_name(type="text", placeholder="Enter your Name")
       
       label.label_class Email:
-      input.ip_login(type="email", placeholder="Enter your email")
+      input#reg_email(type="email", placeholder="Enter your email")
       
       label.label_class Password:
-      input.ip_login(type="text", placeholder="Password of 8 characters")
+      input#reg_password(type="text", placeholder="Password of 8 characters")
       
       label.label_class Password Confirm:
-      input.ip_login(type="text", placeholder="Confirm your Password")
+      input#reg_passwordConfirm(type="text", placeholder="Confirm your Password")
       
-      a.btn.regclass(href="#") Register
+      //-btn.regclass(href="#") Register
+      button.btn Register
