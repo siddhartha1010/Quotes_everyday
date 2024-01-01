@@ -10,14 +10,25 @@ html
   title Email Me | Daily
  
  body
-  block content 
-   //-HEader
-   include _header
-   //-Main content
-   include _body
+  header.header
+   nav.nav 
+    img.logo(src='/img/email_logo.png', alt='Email_logo')
+    div.topic
+     h1 Email Everyday 
 
- script(src='/js/login.js')
- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.3/axios.min.js')
+  block content 
+   include _body
+    
+   //-Main content
+   //- if user
+   //-  include try
+  
+   //- else 
+   //-  include _body
+   
+
+ script(src='/js/bundle.js')
+
 
  
    

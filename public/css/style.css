@@ -205,3 +205,95 @@ h4 {
 .ip_login::placeholder {
   color: #999; /* Lighter color for placeholder text */
 }
+
+/* Overview */
+
+/* styles.css */
+
+.overview_body {
+  display: flex;
+  flex-direction: column; /* Change flex-direction to column */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.button {
+  display: inline-block;
+  width: 40%;
+  padding: 0.52rem 0;
+  margin: 0.52rem;
+  background-color: var(--color-primary);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0.5rem solid black;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+  background-color: var(--color-primary-darker);
+  transform: scale(1.05); /* Add a subtle scaling effect on hover */
+}
+
+.button--text {
+  display: inline-block;
+  background: none;
+  font-size: 1.7rem;
+  font-family: inherit;
+  font-style: oblique;
+  font-weight: 700;
+  color: var(--color-primary);
+  border: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button--text:hover {
+  color: var(--color-primary-darker);
+  transform: translateY(-2px); /* Add a subtle vertical movement on hover */
+}
+
+.button-warning {
+  margin-top: 10rem;
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 0.5rem solid black;
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.6rem 15rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #20bf6b;
+}
+.alert--error {
+  background-color: #eb4d4b;
+}
