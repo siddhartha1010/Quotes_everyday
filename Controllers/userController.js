@@ -56,7 +56,7 @@ exports.sendQuotes = async (req, res, next) => {
       try {
         // Build the aggregation pipeline to exclude the last sent quote
         const aggregationPipeline = [
-          { $match: { _id: { $ne: lastSentQuoteId } } },
+          { $match: { _id: { $ne: lastSentQuoteId }, active: true } },
           { $sample: { size: 1 } },
         ];
 
