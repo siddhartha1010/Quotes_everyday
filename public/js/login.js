@@ -46,7 +46,7 @@ export const logout = async () => {
 };
 
 export const signup = async (name, email, password, passwordConfirm) => {
-  console.log("clicked");
+  // console.log("clicked");
 
   // console.log(email, password);
   try {
@@ -68,6 +68,69 @@ export const signup = async (name, email, password, passwordConfirm) => {
       }, 1500);
     }
     console.log(res);
+  } catch (err) {
+    showAlert("error", err.response.data.message);
+  }
+};
+
+export const sendEmail = async () => {
+  // console.log("sdsadsa");
+
+  try {
+    const res = await axios({
+      method: "GET",
+      url: "http://127.0.0.1:4000/api/v1/users/onequote",
+    });
+
+    if (res.data.status === "success") {
+      showAlert("success", "Email will be sent");
+      // window.setTimeout(() => {
+      //   location.assign("/_overview");
+      // }, 1500);
+    }
+    //console.log(res);
+  } catch (err) {
+    showAlert("error", err.response.data.message);
+  }
+};
+
+export const stopEmail = async () => {
+  // console.log("sdsadsa");
+
+  try {
+    const res = await axios({
+      method: "GET",
+      url: "http://127.0.0.1:4000/api/v1/users/stopsending",
+    });
+
+    if (res.data.status === "success") {
+      showAlert("success", "Email will not be send");
+      // window.setTimeout(() => {
+      //   location.assign("/_overview");
+      // }, 1500);
+    }
+    //console.log(res);
+  } catch (err) {
+    showAlert("error", err.response.data.message);
+  }
+};
+
+export const DeleteUser = async () => {
+  // console.log("sdsadsa");
+
+  try {
+    const res = await axios({
+      method: "DELETE",
+      url: "http://127.0.0.1:4000/api/v1/users/deleteuser",
+    });
+
+    if (res.data.status === "success") {
+      showAlert("success", "User Deleted");
+      // window.setTimeout(() => {
+      //   location.assign("/_overview");
+      // }, 1500);
+    }
+    //console.log(res);
   } catch (err) {
     showAlert("error", err.response.data.message);
   }

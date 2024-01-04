@@ -1,5 +1,12 @@
 import "@babel/polyfill";
-import { login, logout, signup } from "./login";
+import {
+  login,
+  logout,
+  signup,
+  sendEmail,
+  stopEmail,
+  DeleteUser,
+} from "./login";
 
 // const logout = async () => {
 //   console.log("ds");
@@ -18,6 +25,9 @@ import { login, logout, signup } from "./login";
 const loginForm = document.querySelector(".modal__form");
 const logOutBtn = document.querySelector(".button-warning");
 const signupBtn = document.querySelector(".modal__form__login");
+const sendEmailBtn = document.querySelector(".button-sending");
+const stopEmailBtn = document.querySelector(".button-primary");
+const deleteUserBtn = document.querySelector(".button-secondary");
 
 if (loginForm)
   loginForm.addEventListener("submit", (e) => {
@@ -30,6 +40,9 @@ if (loginForm)
   });
 
 if (logOutBtn) logOutBtn.addEventListener("click", logout);
+if (sendEmailBtn) sendEmailBtn.addEventListener("click", sendEmail);
+if (stopEmailBtn) stopEmailBtn.addEventListener("click", stopEmail);
+if (deleteUserBtn) deleteUserBtn.addEventListener("click", DeleteUser);
 
 if (signupBtn)
   signupBtn.addEventListener("submit", (e) => {

@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const { decode } = require("punycode");
 const crypto = require("crypto");
-const sendEmail = require("./../utils/email");
+const Email = require("./../utils/email");
 const { isUint8ClampedArray } = require("util/types");
 
 const sendToken = (id) => {
@@ -38,7 +38,10 @@ const createSendToken = (user, statusCode, res) => {
 
 exports.signup = catchasync(async (req, res) => {
   const newUser = await User.create(req.body);
-
+  // const url = `${req.protocol}://${req.get("host")}`;
+  const url = `http://127.0.0.1:4000/api/v1/users/signup`;
+  // console.log(url);
+  await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, res);
 });
 
@@ -167,19 +170,21 @@ exports.forgotPassword = catchasync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   //Send email to user
-  const restURL = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/users/resetPassword/${resetToken}`;
-  console.log(restURL);
 
-  const message = `Forget password?Submit patch request to ${restURL}`;
+  // console.log(restURL);
+
+  // const message = `Forget password?Submit patch request to ${restURL}`;
   //generally yo case ma we could use catchasync tara yesma error mattra patahaye pugdaina so
   try {
-    await sendEmail({
-      email: req.body.email,
-      subject: "Passwrod reset token",
-      message,
-    });
+    const resetURL = `${req.protocol}://${req.get(
+      "host"
+    )}/api/v1/users/resetPassword/${resetToken}`;
+    // await sendEmail({
+    //   email: req.body.email,
+    //   subject: "Passwrod reset token",
+    //   message,
+    // });
+    await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({
       status: "success",

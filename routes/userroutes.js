@@ -18,5 +18,6 @@ router.patch("/resetPassword/:token", authController.resetPassword);
 router.delete("/deleteuser", authController.protect, userController.deleteMe);
 
 router.get("/onequote", authController.protect, userController.sendQuotes);
+router.get("/stopsending", authController.protect, userController.stopSending);
 
 module.exports = router;

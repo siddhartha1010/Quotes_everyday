@@ -11962,7 +11962,7 @@ exports.Axios = Axios;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signup = exports.logout = exports.login = void 0;
+exports.stopEmail = exports.signup = exports.sendEmail = exports.logout = exports.login = exports.DeleteUser = void 0;
 var _alert = require("./alert");
 var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -12054,11 +12054,8 @@ var signup = exports.signup = /*#__PURE__*/function () {
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
-          console.log("clicked");
-
-          // console.log(email, password);
-          _context3.prev = 1;
-          _context3.next = 4;
+          _context3.prev = 0;
+          _context3.next = 3;
           return (0, _axios.default)({
             method: "POST",
             url: "http://127.0.0.1:4000/api/v1/users/signup",
@@ -12069,7 +12066,7 @@ var signup = exports.signup = /*#__PURE__*/function () {
               passwordConfirm: passwordConfirm
             }
           });
-        case 4:
+        case 3:
           res = _context3.sent;
           if (res.data.status === "success") {
             (0, _alert.showAlert)("success", "Logged in successfuly!");
@@ -12078,20 +12075,131 @@ var signup = exports.signup = /*#__PURE__*/function () {
             }, 1500);
           }
           console.log(res);
-          _context3.next = 12;
+          _context3.next = 11;
           break;
-        case 9:
-          _context3.prev = 9;
-          _context3.t0 = _context3["catch"](1);
+        case 8:
+          _context3.prev = 8;
+          _context3.t0 = _context3["catch"](0);
           (0, _alert.showAlert)("error", _context3.t0.response.data.message);
-        case 12:
+        case 11:
         case "end":
           return _context3.stop();
       }
-    }, _callee3, null, [[1, 9]]);
+    }, _callee3, null, [[0, 8]]);
   }));
   return function signup(_x3, _x4, _x5, _x6) {
     return _ref3.apply(this, arguments);
+  };
+}();
+var sendEmail = exports.sendEmail = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.prev = 0;
+          _context4.next = 3;
+          return (0, _axios.default)({
+            method: "GET",
+            url: "http://127.0.0.1:4000/api/v1/users/onequote"
+          });
+        case 3:
+          res = _context4.sent;
+          if (res.data.status === "success") {
+            (0, _alert.showAlert)("success", "Email will be sent");
+            // window.setTimeout(() => {
+            //   location.assign("/_overview");
+            // }, 1500);
+          }
+          //console.log(res);
+          _context4.next = 10;
+          break;
+        case 7:
+          _context4.prev = 7;
+          _context4.t0 = _context4["catch"](0);
+          (0, _alert.showAlert)("error", _context4.t0.response.data.message);
+        case 10:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[0, 7]]);
+  }));
+  return function sendEmail() {
+    return _ref4.apply(this, arguments);
+  };
+}();
+var stopEmail = exports.stopEmail = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.prev = 0;
+          _context5.next = 3;
+          return (0, _axios.default)({
+            method: "GET",
+            url: "http://127.0.0.1:4000/api/v1/users/stopsending"
+          });
+        case 3:
+          res = _context5.sent;
+          if (res.data.status === "success") {
+            (0, _alert.showAlert)("success", "Email will not be send");
+            // window.setTimeout(() => {
+            //   location.assign("/_overview");
+            // }, 1500);
+          }
+          //console.log(res);
+          _context5.next = 10;
+          break;
+        case 7:
+          _context5.prev = 7;
+          _context5.t0 = _context5["catch"](0);
+          (0, _alert.showAlert)("error", _context5.t0.response.data.message);
+        case 10:
+        case "end":
+          return _context5.stop();
+      }
+    }, _callee5, null, [[0, 7]]);
+  }));
+  return function stopEmail() {
+    return _ref5.apply(this, arguments);
+  };
+}();
+var DeleteUser = exports.DeleteUser = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.prev = 0;
+          _context6.next = 3;
+          return (0, _axios.default)({
+            method: "DELETE",
+            url: "http://127.0.0.1:4000/api/v1/users/deleteuser"
+          });
+        case 3:
+          res = _context6.sent;
+          if (res.data.status === "success") {
+            (0, _alert.showAlert)("success", "User Deleted");
+            // window.setTimeout(() => {
+            //   location.assign("/_overview");
+            // }, 1500);
+          }
+          //console.log(res);
+          _context6.next = 10;
+          break;
+        case 7:
+          _context6.prev = 7;
+          _context6.t0 = _context6["catch"](0);
+          (0, _alert.showAlert)("error", _context6.t0.response.data.message);
+        case 10:
+        case "end":
+          return _context6.stop();
+      }
+    }, _callee6, null, [[0, 7]]);
+  }));
+  return function DeleteUser() {
+    return _ref6.apply(this, arguments);
   };
 }();
 },{"./alert":"alert.js","axios":"../../node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
@@ -12245,6 +12353,9 @@ var _login = require("./login");
 var loginForm = document.querySelector(".modal__form");
 var logOutBtn = document.querySelector(".button-warning");
 var signupBtn = document.querySelector(".modal__form__login");
+var sendEmailBtn = document.querySelector(".button-sending");
+var stopEmailBtn = document.querySelector(".button-primary");
+var deleteUserBtn = document.querySelector(".button-secondary");
 if (loginForm) loginForm.addEventListener("submit", function (e) {
   console.log("yo click vayo");
   e.preventDefault();
@@ -12253,6 +12364,9 @@ if (loginForm) loginForm.addEventListener("submit", function (e) {
   (0, _login.login)(email, password);
 });
 if (logOutBtn) logOutBtn.addEventListener("click", _login.logout);
+if (sendEmailBtn) sendEmailBtn.addEventListener("click", _login.sendEmail);
+if (stopEmailBtn) stopEmailBtn.addEventListener("click", _login.stopEmail);
+if (deleteUserBtn) deleteUserBtn.addEventListener("click", _login.DeleteUser);
 if (signupBtn) signupBtn.addEventListener("submit", function (e) {
   e.preventDefault();
   var name = document.getElementById("reg_name").value;
@@ -12286,7 +12400,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50385" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52792" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
