@@ -6,7 +6,7 @@ export const login = async (email, password) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:4000/api/v1/users/login",
+      url: "/api/v1/users/login",
       data: {
         email,
         password,
@@ -31,7 +31,7 @@ export const logout = async () => {
   try {
     const res = await axios({
       method: "GET",
-      url: "http://127.0.0.1:4000/api/v1/users/logout",
+      url: "/api/v1/users/logout",
     });
 
     // Use strict equality operator (===) for comparison
@@ -52,7 +52,7 @@ export const signup = async (name, email, password, passwordConfirm) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:4000/api/v1/users/signup",
+      url: "/api/v1/users/signup",
       data: {
         name,
         email,
@@ -79,7 +79,7 @@ export const sendEmail = async () => {
   try {
     const res = await axios({
       method: "GET",
-      url: "http://127.0.0.1:4000/api/v1/users/onequote",
+      url: "/api/v1/users/onequote",
     });
 
     if (res.data.status === "success") {
@@ -100,14 +100,11 @@ export const stopEmail = async () => {
   try {
     const res = await axios({
       method: "GET",
-      url: "http://127.0.0.1:4000/api/v1/users/stopsending",
+      url: "/api/v1/users/stopsending",
     });
 
     if (res.data.status === "success") {
       showAlert("success", "Email will not be send");
-      // window.setTimeout(() => {
-      //   location.assign("/_overview");
-      // }, 1500);
     }
     //console.log(res);
   } catch (err) {
@@ -121,16 +118,37 @@ export const DeleteUser = async () => {
   try {
     const res = await axios({
       method: "DELETE",
-      url: "http://127.0.0.1:4000/api/v1/users/deleteuser",
+      url: "/api/v1/users/deleteuser",
     });
 
     if (res.data.status === "success") {
       showAlert("success", "User Deleted");
-      // window.setTimeout(() => {
-      //   location.assign("/_overview");
-      // }, 1500);
     }
-    //console.log(res);
+  } catch (err) {
+    showAlert("error", err.response.data.message);
+  }
+};
+
+export const ForgotPassword = async (
+  name,
+  email,
+  password,
+  passwordConfirm
+) => {
+  try {
+    console.log("dsds");
+
+    const res = await axios({
+      method: "POST",
+      url: "http://127.0.0.1:4000/api/v1/users/forgotpassword",
+      data: {
+        email,
+      },
+    });
+
+    if (res.data.status === "success") {
+      showAlert("success", "Check your Email");
+    }
   } catch (err) {
     showAlert("error", err.response.data.message);
   }

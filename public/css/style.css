@@ -22,7 +22,29 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
+@media screen and (max-width: 768px) {
+  .modal__form {
+    margin: 0 1rem; /* Adjust margin for smaller screens */
+  }
+}
 
+@media screen and (max-width: 576px) {
+  .nav {
+    flex-direction: column; /* Stack navigation items vertically on smaller screens */
+  }
+
+  .modal__form__login {
+    max-width: 100%; /* Make the login form full width on smaller screens */
+  }
+
+  .btn {
+    margin-right: 0; /* Remove margin on smaller screens */
+  }
+
+  .button-warning {
+    margin-top: 1rem; /* Adjust margin on smaller screens */
+  }
+}
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -114,6 +136,25 @@ h4 {
   align-items: center;
 }
 
+.forgetbtn {
+  display: inline-block;
+  /* display: flex; */
+
+  background-color: var(--color-primary);
+  /* background-color: red; */
+  font-size: 1.6rem;
+  font-family: inherit;
+  font-weight: 500;
+  border: none;
+  padding: 1.25rem 2.5rem;
+  border-radius: 10rem;
+  cursor: pointer;
+  /* transition: all 0.3s; */
+  margin-right: 1rem;
+  /* margin-left: 10rem; */
+  text-decoration: none;
+}
+
 .btn {
   display: inline-block;
   /* display: flex; */
@@ -175,8 +216,10 @@ h4 {
 }
 
 .modal__form__login {
-  max-width: 60%;
-  margin: 0 auto;
+  /* display: flex; */
+  max-width: 100%;
+  /* height: 70%; */
+  /* margin: 0 auto; */
   padding: 1.25rem;
   border: 1rem solid #5ec576;
   border-radius: 0.5rem;
@@ -185,7 +228,7 @@ h4 {
 }
 
 .label_class {
-  display: block;
+  display: flex;
   text-align: left;
   margin-bottom: 0.5rem;
   color: #333;
@@ -202,6 +245,16 @@ h4 {
 
   border-radius: 4px;
 }
+
+.ip_loginforget {
+  width: 40%;
+  padding: 0.55rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+  border: 0.07rem solid #333;
+
+  border-radius: 4px;
+}
 .ip_login::placeholder {
   color: #999; /* Lighter color for placeholder text */
 }
@@ -210,18 +263,13 @@ h4 {
 
 /* styles.css */
 
-.overview_body {
+.button-container {
   display: flex;
-  flex-direction: column; /* Change flex-direction to column */
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
 }
 
 .button {
-  display: inline-block;
   width: 40%;
   padding: 0.52rem 0;
   margin: 0.52rem;

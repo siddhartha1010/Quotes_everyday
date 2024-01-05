@@ -138,7 +138,7 @@ exports.isLoggedIn = async (req, res, next) => {
       }
 
       res.locals.user = CurrentUser;
-      console.log(res.locals.user);
+      // console.log(res.locals.user);
 
       return next();
     } catch (err) {
@@ -159,43 +159,78 @@ exports.restrictTo = (...roles) => {
   };
 };
 
+// exports.forgotPassword = catchasync(async (req, res, next) => {
+//   //Get user based ron posted email
+//   const user = await User.findOne({ email: req.body.email });
+//   console.log(user);
+
+//   if (!user) {
+//     return next(new AppError("No user of Such Email", 404));
+//   }
+//   //Generate the random reset token
+//   const resetToken = user.createPasswrodResetToken();
+//   await user.save({ validateBeforeSave: false });
+
+//   //Send email to user
+
+//   // console.log(restURL);
+
+//   // const message = `Forget password?Submit patch request to ${restURL}`;
+//   //generally yo case ma we could use catchasync tara yesma error mattra patahaye pugdaina so
+//   try {
+//     const resetURL = `${req.protocol}://${req.get(
+//       "host"
+//     )}/api/v1/users/resetPassword/${resetToken}`;
+//     // await sendEmail({
+//     //   email: req.body.email,
+//     //   subject: "Passwrod reset token",
+//     //   message,
+//     // });
+//     await new Email(user, resetURL).sendPasswordReset();
+
+//     res.status(200).json({
+//       status: "success",
+//       message: "Token has been sent",
+//     });
+//   } catch (err) {
+//     (user.passwordResetToken = undefined),
+//       (user.passwordResetExpires = undefined),
+//       await user.save({ validateBeforeSave: false });
+
+//     return next(new AppError("Error sending email", 500));
+//   }
+// });
 exports.forgotPassword = catchasync(async (req, res, next) => {
-  //Get user based ron posted email
+  // 1) Get user based on POSTed email
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    return next(new AppError("please provide correct password and email", 404));
+    return next(new AppError("There is no user with email address.", 404));
   }
-  //Generate the random reset token
+
+  // 2) Generate the random reset token
   const resetToken = user.createPasswrodResetToken();
   await user.save({ validateBeforeSave: false });
 
-  //Send email to user
-
-  // console.log(restURL);
-
-  // const message = `Forget password?Submit patch request to ${restURL}`;
-  //generally yo case ma we could use catchasync tara yesma error mattra patahaye pugdaina so
+  // 3) Send it to user's email
   try {
     const resetURL = `${req.protocol}://${req.get(
       "host"
     )}/api/v1/users/resetPassword/${resetToken}`;
-    // await sendEmail({
-    //   email: req.body.email,
-    //   subject: "Passwrod reset token",
-    //   message,
-    // });
     await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({
       status: "success",
-      message: "Token has been sent",
+      message: "Token sent to email!",
     });
   } catch (err) {
-    (user.passwordResetToken = undefined),
-      (user.passwordResetExpires = undefined),
-      await user.save({ validateBeforeSave: false });
+    user.passwordResetToken = undefined;
+    user.passwordResetExpires = undefined;
+    await user.save({ validateBeforeSave: false });
 
-    return next(new AppError("Error sending email", 500));
+    return next(
+      new AppError("There was an error sending the email. Try again later!"),
+      500
+    );
   }
 });
 

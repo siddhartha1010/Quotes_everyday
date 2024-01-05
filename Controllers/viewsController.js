@@ -9,3 +9,7 @@ exports.main = (req, res) => {
 exports.register = (req, res) => {
   res.status(200).render("register");
 };
+
+exports.forgetPassword = (req, res) => {
+  res.status(200).render("forgetPassword");
+};

@@ -9,5 +9,6 @@ router.get("/", viewsController.main),
   router.get("/_overview", viewsController.getOverview);
 
 router.get("/register", viewsController.register);
+router.get("/forgetPassword", viewsController.forgetPassword);
 
 module.exports = router;

@@ -6,6 +6,7 @@ import {
   sendEmail,
   stopEmail,
   DeleteUser,
+  ForgotPassword,
 } from "./login";
 
 // const logout = async () => {
@@ -28,10 +29,11 @@ const signupBtn = document.querySelector(".modal__form__login");
 const sendEmailBtn = document.querySelector(".button-sending");
 const stopEmailBtn = document.querySelector(".button-primary");
 const deleteUserBtn = document.querySelector(".button-secondary");
+const forgetPassBtn = document.querySelector(".forgetbtn");
 
 if (loginForm)
   loginForm.addEventListener("submit", (e) => {
-    console.log("yo click vayo");
+    // console.log("yo click vayo");
 
     e.preventDefault();
     const email = document.getElementById("logemail").value;
@@ -43,6 +45,7 @@ if (logOutBtn) logOutBtn.addEventListener("click", logout);
 if (sendEmailBtn) sendEmailBtn.addEventListener("click", sendEmail);
 if (stopEmailBtn) stopEmailBtn.addEventListener("click", stopEmail);
 if (deleteUserBtn) deleteUserBtn.addEventListener("click", DeleteUser);
+if (forgetPassBtn) forgetPassBtn.addEventListener("click", ForgotPassword);
 
 if (signupBtn)
   signupBtn.addEventListener("submit", (e) => {

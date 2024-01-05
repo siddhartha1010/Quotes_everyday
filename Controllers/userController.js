@@ -77,7 +77,7 @@ exports.sendQuotes = async (req, res, next) => {
         ];
 
         const randomQuote = await Quote.aggregate(aggregationPipeline);
-        console.log(randomQuote);
+        // console.log(randomQuote);
 
         if (!randomQuote || randomQuote.length === 0) {
           console.error("No quotes found in the database");
@@ -102,7 +102,7 @@ exports.sendQuotes = async (req, res, next) => {
     };
 
     // Schedule the task to run every minute
-    cron.schedule("* * * * *", () => {
+    cron.schedule("0 6 * * *", () => {
       sendRandomQuote();
     });
 
@@ -129,85 +129,3 @@ exports.stopSending = (req, res) => {
     message: "Email sending has been paused",
   });
 };
-
-// let sendQuotesFlag = true; // Flag to control whether to send quotes or not
-
-// exports.sendQuotes = async (req, res, next) => {
-//   try {
-//     let lastSentQuoteId = null;
-
-//     // Function to send a random quote
-//     const sendRandomQuote = async () => {
-//       try {
-//         if (!sendQuotesFlag) {
-//           console.log("Email sending is paused");
-//           return;
-//         }
-
-//         // Build the aggregation pipeline to exclude the last sent quote
-//         const aggregationPipeline = [
-//           { $match: { _id: { $ne: lastSentQuoteId } } },
-//           { $sample: { size: 1 } },
-//         ];
-
-//         const randomQuote = await Quote.aggregate(aggregationPipeline);
-//         console.log(randomQuote);
-
-//         if (!randomQuote || randomQuote.length === 0) {
-//           console.error("No quotes found in the database");
-//           return;
-//         }
-
-//         // Update the lastSentQuoteId for the next iteration
-//         lastSentQuoteId = randomQuote[0]._id;
-
-//         const quoteText = randomQuote[0].quote;
-
-//         // Instantiate the Email class and send the email
-//         await new Email(req.user, quoteText).sendEmail(quoteText);
-
-//         console.log("Quote has been sent to your email");
-//       } catch (error) {
-//         console.error("Error sending quote:", error);
-//       }
-//     };
-
-//     // Schedule the task to run every minute
-//     const job = cron.schedule("* * * * *", () => {
-//       sendRandomQuote();
-//     });
-
-//     // Initial execution
-//     sendRandomQuote();
-
-//     res.status(200).json({
-//       status: "success",
-//       message: "Quote sending task scheduled",
-//     });
-
-//     // Create a controller to stop sending quotes
-//     app.post("/stopSendingQuotes", (req, res) => {
-//       sendQuotesFlag = false;
-//       job.stop(); // Stop the cron job
-//       res.status(200).json({
-//         status: "success",
-//         message: "Email sending has been paused",
-//       });
-//     });
-//   } catch (error) {
-//     console.error("Internal server error:", error);
-//     res.status(500).json({
-//       status: "error",
-//       message: "Internal server error",
-//     });
-//   }
-// };
-
-// Controller to stop sending emails
-// exports.stopSending = (req, res) => {
-//   sendQuotesFlag = false;
-//   res.status(200).json({
-//     status: "success",
-//     message: "Email sending has been paused",
-//   });
-// };

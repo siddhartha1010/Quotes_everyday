@@ -4,7 +4,7 @@ const express = require("express");
 const userRouter = require("./routes/userroutes");
 const quoteRouter = require("./routes/quoteroutes");
 const viewRouter = require("./routes/viewroutes");
-
+const compression = require("compression");
 const helmet = require("helmet");
 const AppError = require("./utils/appError");
 const globalError = require("./Controllers/errorController");
@@ -36,6 +36,8 @@ if (process.env.NODE_ENV === "development") {
 }
 app.use(express.json({ limit: "10kb" }));
 app.use(cookieParser());
+
+app.use(compression());
 
 // app.use((req, res, next) => {
 //   console.log(req.cookies);
