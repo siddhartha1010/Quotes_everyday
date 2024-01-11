@@ -102,9 +102,9 @@ exports.sendQuotes = async (req, res, next) => {
     };
 
     // Schedule the task to run every minute
-    cron.schedule("*/2 * * * *", () => {
-      sendRandomQuote();
-    });
+   cron.schedule("0 */2 * * *", () => {
+  sendRandomQuote();
+});
 
     // Initial execution
     sendRandomQuote();
