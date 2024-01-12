@@ -102,7 +102,7 @@ exports.sendQuotes = async (req, res, next) => {
     };
 
   
-cron.schedule("0 * * * *", () => {
+cron.schedule("*/10 * * * *", () => {
   sendRandomQuote();
 });
 
